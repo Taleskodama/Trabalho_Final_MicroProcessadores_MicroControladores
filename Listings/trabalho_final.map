@@ -4,7 +4,8 @@ Component: Arm Compiler for Embedded 6.23 Tool: armlink [5f102400]
 
 Section Cross References
 
-    main.o(atv2_code) refers to main.o(ARR_TABLE) for arr_lookup_table
+    main.o(atv1) refers to main.o(VARIAVEIS) for TIMBRE_ATUAL
+    main.o(atv1) refers to main.o(DADOS) for PSC_TAB
     gpio_stm32f10x.o(.ARM.exidx.text.GPIO_PortClock) refers to gpio_stm32f10x.o(.text.GPIO_PortClock) for [Anonymous Symbol]
     gpio_stm32f10x.o(.ARM.exidx.text.GPIO_GetPortClockState) refers to gpio_stm32f10x.o(.text.GPIO_GetPortClockState) for [Anonymous Symbol]
     gpio_stm32f10x.o(.text.GPIO_PinConfigure) refers to gpio_stm32f10x.o(.text.GPIO_GetPortClockState) for GPIO_GetPortClockState
@@ -18,7 +19,7 @@ Section Cross References
     startup_stm32f10x_md.o(RESET) refers to startup_stm32f10x_md.o(.text) for Reset_Handler
     startup_stm32f10x_md.o(.text) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_stm32f10x_md.o(.text) refers to system_stm32f10x.o(.text.SystemInit) for SystemInit
-    startup_stm32f10x_md.o(.text) refers to main.o(atv2_code) for __main
+    startup_stm32f10x_md.o(.text) refers to main.o(atv1) for __main
     startup_stm32f10x_md.o(.text) refers to startup_stm32f10x_md.o(HEAP) for Heap_Mem
     startup_stm32f10x_md.o(.text) refers to startup_stm32f10x_md.o(STACK) for Stack_Mem
     system_stm32f10x.o(.text.SystemInit) refers to system_stm32f10x.o(.text.SetSysClock) for SetSysClock
@@ -73,9 +74,12 @@ Image Symbol Table
     [Anonymous Symbol]                       0x0800062c   Section        0  system_stm32f10x.o(.text.SetSysClockTo72)
     [Anonymous Symbol]                       0x08000750   Section        0  system_stm32f10x.o(.text.SystemCoreClockUpdate)
     [Anonymous Symbol]                       0x08000874   Section        0  system_stm32f10x.o(.text.SystemInit)
-    atv2_code                                0x080008dc   Section      208  main.o(atv2_code)
-    arr_lookup_table                         0x080009bc   Data           0  main.o(ARR_TABLE)
-    ARR_TABLE                                0x080009bc   Section       36  main.o(ARR_TABLE)
+    atv1                                     0x080008dc   Section      828  main.o(atv1)
+    PSC_TAB                                  0x08000c28   Data           0  main.o(DADOS)
+    DADOS                                    0x08000c28   Section       26  main.o(DADOS)
+    OITAVA_ATUAL                             0x20000004   Data           1  main.o(VARIAVEIS)
+    VARIAVEIS                                0x20000004   Section        4  main.o(VARIAVEIS)
+    TIMBRE_ATUAL                             0x20000005   Data           1  main.o(VARIAVEIS)
     Heap_Mem                                 0x20000008   Data         512  startup_stm32f10x_md.o(HEAP)
     HEAP                                     0x20000008   Section      512  startup_stm32f10x_md.o(HEAP)
     Stack_Mem                                0x20000208   Data        1024  startup_stm32f10x_md.o(STACK)
@@ -153,8 +157,8 @@ Image Symbol Table
     GPIO_PortClock                           0x08000415   Thumb Code   528  gpio_stm32f10x.o(.text.GPIO_PortClock)
     SystemCoreClockUpdate                    0x08000751   Thumb Code   290  system_stm32f10x.o(.text.SystemCoreClockUpdate)
     SystemInit                               0x08000875   Thumb Code   102  system_stm32f10x.o(.text.SystemInit)
-    __main                                   0x080008dd   Thumb Code     0  main.o(atv2_code)
-    AHBPrescTable                            0x080009ac   Data          16  system_stm32f10x.o(.rodata.AHBPrescTable)
+    __main                                   0x080008dd   Thumb Code     0  main.o(atv1)
+    AHBPrescTable                            0x08000c18   Data          16  system_stm32f10x.o(.rodata.AHBPrescTable)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f10x.o(.data.SystemCoreClock)
 
 
@@ -165,43 +169,43 @@ Memory Map of the image
 
   Image entry point : Not specified.
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x000009e8, Max: 0x00010000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00000c50, Max: 0x00010000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x000009e0, Max: 0x00010000, ABSOLUTE)
+    Execution Region ER_IROM1 (Exec base: 0x08000000, Load base: 0x08000000, Size: 0x00000c44, Max: 0x00010000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x08000000   0x08000000   0x000000ec   Data   RO           24    RESET               startup_stm32f10x_md.o
-    0x080000ec   0x080000ec   0x00000000   Code   RO            7    .text               gpio_stm32f10x.o
-    0x080000ec   0x080000ec   0x00000040   Code   RO           25    .text               startup_stm32f10x_md.o
-    0x0800012c   0x0800012c   0x00000000   Code   RO           29    .text               system_stm32f10x.o
-    0x0800012c   0x0800012c   0x00000006   Code   RO           48    .text               c_w.l(heapauxi.o)
+    0x08000000   0x08000000   0x000000ec   Data   RO           25    RESET               startup_stm32f10x_md.o
+    0x080000ec   0x080000ec   0x00000000   Code   RO            8    .text               gpio_stm32f10x.o
+    0x080000ec   0x080000ec   0x00000040   Code   RO           26    .text               startup_stm32f10x_md.o
+    0x0800012c   0x0800012c   0x00000000   Code   RO           30    .text               system_stm32f10x.o
+    0x0800012c   0x0800012c   0x00000006   Code   RO           49    .text               c_w.l(heapauxi.o)
     0x08000132   0x08000132   0x00000002   PAD
-    0x08000134   0x08000134   0x000000e4   Code   RO           14    .text.GPIO_AFConfigure  gpio_stm32f10x.o
-    0x08000218   0x08000218   0x0000011c   Code   RO           10    .text.GPIO_GetPortClockState  gpio_stm32f10x.o
-    0x08000334   0x08000334   0x000000de   Code   RO           12    .text.GPIO_PinConfigure  gpio_stm32f10x.o
+    0x08000134   0x08000134   0x000000e4   Code   RO           15    .text.GPIO_AFConfigure  gpio_stm32f10x.o
+    0x08000218   0x08000218   0x0000011c   Code   RO           11    .text.GPIO_GetPortClockState  gpio_stm32f10x.o
+    0x08000334   0x08000334   0x000000de   Code   RO           13    .text.GPIO_PinConfigure  gpio_stm32f10x.o
     0x08000412   0x08000412   0x00000002   PAD
-    0x08000414   0x08000414   0x00000210   Code   RO            8    .text.GPIO_PortClock  gpio_stm32f10x.o
-    0x08000624   0x08000624   0x00000008   Code   RO           32    .text.SetSysClock   system_stm32f10x.o
-    0x0800062c   0x0800062c   0x00000122   Code   RO           36    .text.SetSysClockTo72  system_stm32f10x.o
+    0x08000414   0x08000414   0x00000210   Code   RO            9    .text.GPIO_PortClock  gpio_stm32f10x.o
+    0x08000624   0x08000624   0x00000008   Code   RO           33    .text.SetSysClock   system_stm32f10x.o
+    0x0800062c   0x0800062c   0x00000122   Code   RO           37    .text.SetSysClockTo72  system_stm32f10x.o
     0x0800074e   0x0800074e   0x00000002   PAD
-    0x08000750   0x08000750   0x00000122   Code   RO           34    .text.SystemCoreClockUpdate  system_stm32f10x.o
+    0x08000750   0x08000750   0x00000122   Code   RO           35    .text.SystemCoreClockUpdate  system_stm32f10x.o
     0x08000872   0x08000872   0x00000002   PAD
-    0x08000874   0x08000874   0x00000066   Code   RO           30    .text.SystemInit    system_stm32f10x.o
+    0x08000874   0x08000874   0x00000066   Code   RO           31    .text.SystemInit    system_stm32f10x.o
     0x080008da   0x080008da   0x00000002   PAD
-    0x080008dc   0x080008dc   0x000000d0   Code   RO            2    atv2_code           main.o
-    0x080009ac   0x080009ac   0x00000010   Data   RO           39    .rodata.AHBPrescTable  system_stm32f10x.o
-    0x080009bc   0x080009bc   0x00000024   Data   RO            1    ARR_TABLE           main.o
+    0x080008dc   0x080008dc   0x0000033c   Code   RO            3    atv1                main.o
+    0x08000c18   0x08000c18   0x00000010   Data   RO           40    .rodata.AHBPrescTable  system_stm32f10x.o
+    0x08000c28   0x08000c28   0x0000001a   Data   RO            1    DADOS               main.o
 
 
-    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x080009e0, Size: 0x00000608, Max: 0x00005000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Exec base: 0x20000000, Load base: 0x08000c48, Size: 0x00000608, Max: 0x00005000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x20000000   0x080009e0   0x00000004   Data   RW           38    .data.SystemCoreClock  system_stm32f10x.o
-    0x20000004   0x080009e4   0x00000004   PAD
-    0x20000008        -       0x00000200   Zero   RW           23    HEAP                startup_stm32f10x_md.o
-    0x20000208        -       0x00000400   Zero   RW           22    STACK               startup_stm32f10x_md.o
+    0x20000000   0x08000c48   0x00000004   Data   RW           39    .data.SystemCoreClock  system_stm32f10x.o
+    0x20000004   0x08000c4c   0x00000004   Data   RW            2    VARIAVEIS           main.o
+    0x20000008        -       0x00000200   Zero   RW           24    HEAP                startup_stm32f10x_md.o
+    0x20000208        -       0x00000400   Zero   RW           23    STACK               startup_stm32f10x_md.o
 
 
 ==============================================================================
@@ -212,14 +216,14 @@ Image component sizes
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
       1262          0          0          0          0       5171   gpio_stm32f10x.o
-       208         60         36          0          0        304   main.o
+       828        134         26          4          0        504   main.o
         64         26        236          0       1536        816   startup_stm32f10x_md.o
        690          0         16          4          0       3003   system_stm32f10x.o
 
     ----------------------------------------------------------------------
-      2232         86        288          4       1540       9294   Object Totals
+      2852        160        280          8       1536       9494   Object Totals
          0          0          0          0          0          0   (incl. Generated)
-         8          0          0          0          4          0   (incl. Padding)
+         8          0          2          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -247,15 +251,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      2240         86        288          4       1540       9426   Grand Totals
-      2240         86        288          4       1540       9426   ELF Image Totals
-      2240         86        288          4          0          0   ROM Totals
+      2860        160        280          8       1536       9626   Grand Totals
+      2860        160        280          8       1536       9626   ELF Image Totals
+      2860        160        280          8          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 2528 (   2.47kB)
+    Total RO  Size (Code + RO Data)                 3140 (   3.07kB)
     Total RW  Size (RW Data + ZI Data)              1544 (   1.51kB)
-    Total ROM Size (Code + RO Data + RW Data)       2532 (   2.47kB)
+    Total ROM Size (Code + RO Data + RW Data)       3148 (   3.07kB)
 
 ==============================================================================
 

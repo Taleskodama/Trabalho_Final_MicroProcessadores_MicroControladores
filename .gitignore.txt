@@ -1,0 +1,20 @@
+# Arquivos de compilação do Keil
+*.o
+*.d
+*.crf
+*.dep
+*.map
+*.axf
+*.htm
+*.lnp
+*.sct
+*.lst
+*.bak
+*.uvguix.*
+*.uvoptx
+
+# Pastas geradas automaticamente
+Objects/
+Listings/
+DebugConfig/
+RTE/

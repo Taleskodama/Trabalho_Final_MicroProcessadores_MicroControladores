@@ -27,14 +27,17 @@ Project File Date:  11/11/2025
 <h2>Output:</h2>
 *** Using Compiler 'V6.23', folder: 'C:\Users\tales\AppData\Local\Keil_v5\ARM\ARMCLANG\Bin'
 Rebuild target 'Target_1'
-assembling startup_stm32f10x_md.s...
+"main.s", line 473: Warning: A1581W: Added 2 bytes of padding at address 0x2b6
+  473 000002b8         END
+0 Errors, 1 Warning
 assembling main.s...
-compiling GPIO_STM32F10x.c...
 compiling system_stm32f10x.c...
+assembling startup_stm32f10x_md.s...
+compiling GPIO_STM32F10x.c...
 linking...
 .\Objects\trabalho_final.axf: Warning: L6305W: Image does not have an entry point. (Not specified or not set due to multiple choices.)
 .\Objects\trabalho_final.sct(8): warning: L6314W: No section matches pattern *(InRoot$$Sections).
-Program Size: Code=2240 RO-data=288 RW-data=4 ZI-data=1540  
+Program Size: Code=2860 RO-data=280 RW-data=8 ZI-data=1536  
 Finished: 0 information, 2 warning and 0 error messages.
 ".\Objects\trabalho_final.axf" - 0 Error(s), 2 Warning(s).
 
@@ -69,10 +72,10 @@ Package Vendor: Keil
       Include file:  RTE_Driver/GPIO_STM32F10x.h
 
    * Component: Keil::Device:Startup@1.0.0
+      Include file:  RTE_Driver/Config/RTE_Device.h
+      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
       Source file:   Device/Source/ARM/startup_stm32f10x_md.s
       Source file:   Device/Source/system_stm32f10x.c
-      Source file:   Device/Source/ARM/STM32F1xx_OPT.s
-      Include file:  RTE_Driver/Config/RTE_Device.h
 Build Time Elapsed:  00:00:01
 </pre>
 </body>
